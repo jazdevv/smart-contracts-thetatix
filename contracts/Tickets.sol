@@ -45,9 +45,9 @@ contract Tickets is ERC721, Ownable {
         ticketPrice = _ticketPrice * 1000000;//convert tfuel to drop
     }
 
-    // function getUserTickets(address _userAddress)public view returns(uint[] memory){
-    //     return userTickets[_userAddress];
-    // }
+    function getUserTickets(address _userAddress)public view returns(uint[] memory){
+        return userTickets[_userAddress];
+    }
 
     function getData()public view returns(string memory,string memory,string memory,uint,uint,uint){
         return(eventName,eventDescription,eventDate,ticketCounter,ticketPrice,maxTickets);
