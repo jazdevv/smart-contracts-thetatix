@@ -78,7 +78,8 @@ contract Tickets is ERC721, Ownable {
         _safeMint(msg.sender, ticketCounter);
         //emit new ticket count
         emit data(ticketCounter);
-
+        //increase amount 
+        amountTickets += msg.value;
     }
 
     //only admins

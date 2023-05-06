@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "contracts/thetatix-tickets.sol";
+import "contracts/Tickets.sol";
 
 contract ticketsFactory {
     mapping(string=>address)addressGetter;//for database and frontend interaction
