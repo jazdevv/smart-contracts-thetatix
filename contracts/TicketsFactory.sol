@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "contracts/Tickets.sol";
+import "./Tickets.sol";
 
 contract ticketsFactory {
     mapping(string=>address)addressGetter;//for database and frontend interaction
     mapping(address=>address[])userCreatedEvents;
     address[] public createdTickets;
     address public admin;
+    uint public amountRecaudedFees;
 
     constructor(){
         admin = msg.sender;
@@ -25,6 +26,15 @@ contract ticketsFactory {
 
     function getAddressFromUuid(string memory _uuid)public view returns(address){
         return addressGetter[_uuid];
+    }
+
+    function recaudeFees()external payable{
+        amountRecaudedFees += msg.value;
+    }
+
+    function withdrawfees()external{
+        payable(admin).transfer(amountRecaudedFees);
+        amountRecaudedFees = 0;
     }
 
     function working() public pure returns(string memory){
